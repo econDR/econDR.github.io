@@ -34,6 +34,12 @@ Since <b>Fall 2021</b>
 
 <p class="seminar-section-title">Invited Seminars</p>
 
+<b>2025</b><br>
+
+<div class="seminar-entry">
+  International workshop: <i>A common good approach to development. 2nd Expert Seminar</i>, Universidad Popular Autónoma del Estado de Puebla (UPAEP). Invited speaker. Research project presented (with Mario A. Maggioni, Oscar Garza Vazquez e Ricardo Nogales): Public game application in Cordoba. 
+</div>
+
 <b>2024</b><br>
 
 <div class="seminar-entry">
