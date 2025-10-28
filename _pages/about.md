@@ -31,6 +31,6 @@ latest_posts:
 I am an <b>economist</b> and currently an <b>Associate Professor</b> at the Department of International Economics, Institutions and Development (DISEIS) at Università Cattolica del Sacro Cuore in Milan.<br>
 I hold an MSc in Political Science and Political Economy from the <b>London School of Economics (LSE)</b> and a PhD in Institutions and Politics (Economics major) from <b>Università Cattolica del Sacro Cuore</b>.<br>
 My research focuses on the effects of institutions on economic and political outcomes, mostly from a historical perspective (Historical Political Economy), and also explores behavioral mechanisms using methods from Microeconomics, Behavioral, and Experimental Economics.<br><br>
-I hold the <b>Italian National Abilitation<\b> for Full Professor (Scientific Area 13/A2)<br><br>
+I hold the <b>Italian National Abilitation</b> for Full Professor (Scientific Area 13/A2)<br><br>
 I am a member of the Editorial Board of <a href="https://www.nature.com/palcomms/editorialboard">Nature: Humanities and Social Sciences Communications</a>.<br>
 I also serve on the Editorial Board of <i>La Società</i>.
