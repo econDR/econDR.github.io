@@ -26,9 +26,23 @@ jobs:
           gem install bundler
           bundle config set path 'vendor/bundle'
           bundle install
-
-      - name: Build Jekyll site
-        run: bundle exec jekyll build
+      - name: Install ImageMagick (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick
+    
+      - name: Install ImageMagick (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew install imagemagick
+    
+      - name: Install ImageMagick (Windows)
+        if: runner.os == 'Windows'
+        run: choco install imagemagick -y
+          - name: Build Jekyll site
+            run: bundle exec jekyll build
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
