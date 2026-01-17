@@ -6,7 +6,7 @@ subtitle: "<a href='https://docenti.unicatt.it/ppd2/en/docenti/26508/domenico-ro
 
 profile:
   align: right
-  image: foto profilo rossignoli 2025.jpg
+  image: foto_rossignoli_2025.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Largo Gemelli, 1 - 20123</p><br>
