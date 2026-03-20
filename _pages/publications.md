@@ -11,13 +11,13 @@ nav_order: 2
 
 <div class="publications">
 
-<b>Books</b>
-
-{% bibliography --file papers --query @book %}
-
 <b>Journal Articles</b>
 
 {% bibliography --file papers --query @article %}
+
+<b>Books</b>
+
+{% bibliography --file papers --query @book %}
 
 <b>Book Chapters</b>
 
