@@ -1,17 +1,28 @@
-- title: "The Cross and the Sword: Religious Identity, Land Ownership and Conflict in Early Modern Italy"
-  coauthors:
-    - "Federico Trombetta"
-  status: "Working paper"
-  abstract: "This project studies how religious identity and patterns of land ownership interacted to shape local conflict dynamics in early modern England."
-  paper_url: ""
-  data_url: ""
-  code_url: ""
-
 - title: "Crediting the Poor: The Effect of Italian Monti di Pietà on Social Capital"
   coauthors:
     - "Costanza Marconi"
   status: "Working paper"
   abstract: "Religious persuasion through Franciscan preaching causally drove the emergence of Monti di Pietà in 15th-century Italy by legitimizing lending, particularly in contexts shaped by natural disasters."
+  paper_url: ""
+  data_url: ""
+  code_url: ""
+
+- title: "The Cross and the Sword. Religious Identity, Land Ownership and Conflict: Evidence from Six Centuries of English History"
+  coauthors:
+    - "Federico Trombetta"
+  status: "Work in progress"
+  abstract: "This project studies how religious identity and patterns of land ownership interacted to shape local conflict dynamics in early modern England."
+  paper_url: ""
+  data_url: ""
+  code_url: ""
+
+- title: "The Feudal Origins of Economic Development: Evidence from Medieval Sicily"
+  coauthors:
+    - "Leonardo Cherici"
+    - "Guido Merzoni"
+    - "Federico Trombetta"
+  status: "Work in progress"
+  abstract: "The paper shows that temporary Crown repossession of feudal territories in medieval Sicily reduced agency problems and rent extraction, leading to persistently better local economic outcomes."
   paper_url: ""
   data_url: ""
   code_url: ""
