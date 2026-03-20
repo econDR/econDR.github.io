@@ -2,7 +2,7 @@
   coauthors:
     - "Federico Trombetta"
   status: "Working paper"
-  abstract: "This project studies how religious identity and patterns of land ownership interacted to shape local conflict dynamics in early modern Italy."
+  abstract: "This project studies how religious identity and patterns of land ownership interacted to shape local conflict dynamics in early modern England."
   paper_url: ""
   data_url: ""
   code_url: ""
@@ -11,16 +11,17 @@
   coauthors:
     - "Costanza Marconi"
   status: "Working paper"
-  abstract: "This paper examines whether historical access to charitable credit institutions had persistent effects on trust and civic engagement."
+  abstract: "Religious persuasion through Franciscan preaching causally drove the emergence of Monti di Pietà in 15th-century Italy by legitimizing lending, particularly in contexts shaped by natural disasters."
   paper_url: ""
   data_url: ""
   code_url: ""
 
-- title: "Communication and Cooperation in Strategic Human-Robot Interactions"
+- title: "Noise and Cooperation in an Indefinitely Repeated Prisoner's Dilemma"
   coauthors:
-    - "Mario A. Maggioni"
+    - "Mario A. Maggioni" 
+    - "Chiara Nardi"
   status: "Work in progress"
-  abstract: "We analyze how communication technologies affect cooperation in strategic environments involving human and AI/robot interactions."
+  abstract: "This study shows that noise (modeled as action reversals) weakens mutual cooperation in an indefinitely repeated Prisoner’s Dilemma: ex-post communication reduces cooperation only under no or low noise."
   paper_url: ""
   data_url: ""
   code_url: ""
