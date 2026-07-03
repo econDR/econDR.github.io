@@ -6,6 +6,7 @@
   paper_url: ""
   data_url: ""
   code_url: ""
+  page: "/papers/monti-di-pieta/"
 
 - title: "The Cross and the Sword. Religious Identity, Land Ownership and Conflict: Evidence from Six Centuries of English History"
   coauthors:
@@ -15,6 +16,7 @@
   paper_url: ""
   data_url: ""
   code_url: ""
+  page: "/papers/cross-and-sword/"
 
 - title: "The Feudal Origins of Economic Development: Evidence from Medieval Sicily"
   coauthors:
@@ -26,6 +28,7 @@
   paper_url: ""
   data_url: ""
   code_url: ""
+  page: "/papers/feudal-origins/"
 
 - title: "Noise and Cooperation in an Indefinitely Repeated Prisoner's Dilemma"
   coauthors:
@@ -36,3 +39,4 @@
   paper_url: ""
   data_url: ""
   code_url: ""
+  page: "/papers/noise-and-cooperation/"

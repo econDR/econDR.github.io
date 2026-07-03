@@ -1,0 +1,108 @@
+<style>
+  .paper-meta {
+    color: #5f6368;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .paper-abstract {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .paper-links {
+    margin-bottom: 1.75rem;
+  }
+
+  .paper-links a {
+    margin-right: 0.9rem;
+  }
+
+  .citation-box {
+    position: relative;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    background: #fafafa;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .citation-box h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #5f6368;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .citation-box pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.85rem;
+  }
+
+  .citation-copy {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.7rem;
+    border: 1px solid #c6c6c6;
+    border-radius: 5px;
+    background: #ffffff;
+    font-size: 0.78rem;
+    padding: 0.15rem 0.55rem;
+    cursor: pointer;
+  }
+
+  .citation-copy:hover {
+    background: #f0f0f0;
+  }
+</style>
+
+<div class="paper-meta">
+  {{ page.authors }} · {{ page.status }}
+</div>
+
+<h2>Abstract</h2>
+<div class="paper-abstract">{{ page.abstract }}</div>
+
+{% if page.paper_url or page.data_url or page.code_url %}
+  <div class="paper-links">
+    {% if page.paper_url %}<a href="{{ page.paper_url }}" target="_blank" rel="noopener">Paper (PDF)</a>{% endif %}
+    {% if page.data_url %}<a href="{{ page.data_url }}" target="_blank" rel="noopener">Data</a>{% endif %}
+    {% if page.code_url %}<a href="{{ page.code_url }}" target="_blank" rel="noopener">Code</a>{% endif %}
+  </div>
+{% endif %}
+
+<h2>How to cite</h2>
+
+<div class="citation-box">
+  <h3>APA</h3>
+  <button class="citation-copy" data-target="cite-apa">Copy</button>
+  <pre id="cite-apa">{{ page.cite_apa }}</pre>
+</div>
+
+<div class="citation-box">
+  <h3>BibTeX</h3>
+  <button class="citation-copy" data-target="cite-bibtex">Copy</button>
+  <pre id="cite-bibtex">{{ page.cite_bibtex }}</pre>
+</div>
+
+<p><a href="{{ '/work-in-progress/' | relative_url }}">&larr; Back to work in progress</a></p>
+
+<script>
+  document.querySelectorAll(".citation-copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = document.getElementById(btn.dataset.target).innerText;
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = "Copied!";
+        setTimeout(function () {
+          btn.textContent = "Copy";
+        }, 1500);
+      });
+    });
+  });
+</script>

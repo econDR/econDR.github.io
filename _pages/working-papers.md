@@ -57,6 +57,9 @@ nav_order: 4
       </div>
       <div>{{ paper.abstract }}</div>
       <div class="wip-links">
+        {% if paper.page %}
+          <a href="{{ paper.page | relative_url }}">Details &amp; citation</a>
+        {% endif %}
         {% if paper.paper_url != "" %}
           <a href="{{ paper.paper_url }}" target="_blank" rel="noopener">Paper</a>
         {% endif %}

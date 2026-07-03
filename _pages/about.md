@@ -33,4 +33,4 @@ I hold an MSc in Political Science and Political Economy from the <b>London Scho
 My research studies how institutions shape economic and political outcomes, with a strong focus on <b>Historical Political Economy</b>. I also investigate behavioral mechanisms through tools from microeconomics, behavioral economics, and experimental methods.<br><br>
 I hold the <b>Italian National Habilitation</b> for Full Professor (Scientific Area 13/A2).<br><br>
 I serve on the Editorial Board of <a href="https://www.nature.com/palcomms/editorialboard">Nature: Humanities and Social Sciences Communications</a> and on the Editorial Board of <i>La Società</i>.<br><br>
-For ongoing research, draft manuscripts, and related material, please visit the <a href="/work-in-progress/"><b>Work in Progress</b></a> section.
+For a plain-language summary of what I have learned from my research, visit <a href="/research-insights/"><b>Research Insights</b></a>. For ongoing research, draft manuscripts, and related material, please visit the <a href="/work-in-progress/"><b>Work in Progress</b></a> section.

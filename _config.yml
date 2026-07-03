@@ -13,10 +13,10 @@ last_name: Rossignoli
 # My personal academic webpage. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-keywords: economics, political economy, historical political economy, Domenico Rossignoli, academic website, jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: Domenico Rossignoli, economics, political economy, historical political economy, institutions, economic development, behavioral economics, experimental economics, Università Cattolica # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: logo.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
-url: "" # sito in root
+url: "https://econdr.github.io" # base hostname (needed for valid sitemap, canonical and Open Graph URLs)
 baseurl: "" # obbligatorio vuoto per root
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path: # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
@@ -65,7 +65,7 @@ max_width: 930px
 # see https://schema.org/docs/faq.html for more information
 serve_og_meta: true # Include Open Graph meta tags in the HTML head
 serve_schema_org: true # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+og_image: https://econdr.github.io/assets/img/io_ucsc_2.jpeg # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
 # Analytics and search engine verification
