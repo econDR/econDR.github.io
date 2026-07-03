@@ -42,8 +42,16 @@ jobs:
         if: runner.os == 'Windows'
         run: choco install imagemagick -y
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
       - name: Build Jekyll site
-        run: bundle exec jekyll build
+        run: |
+          pip3 install --upgrade nbconvert
+          export JEKYLL_ENV=production
+          bundle exec jekyll build
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
