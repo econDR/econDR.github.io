@@ -16,13 +16,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-research-insights",
-          title: "research insights",
-          description: "What I have learned from my research: plain-language summaries of the main findings on institutions, democracy, cooperation, and behavior, with links to the underlying papers.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/research-insights/";
-          },
         },{id: "nav-work-in-progress",
           title: "work in progress",
           description: "",
