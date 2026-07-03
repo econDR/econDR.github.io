@@ -3,8 +3,9 @@ layout: page
 title: "research insights"
 description: "What I have learned from my research: plain-language summaries of the main findings on institutions, democracy, cooperation, and behavior, with links to the underlying papers."
 permalink: /research-insights/
-nav: true
+nav: false
 nav_order: 3
+sitemap: false
 ---
 
 <style>
