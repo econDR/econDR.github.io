@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://econdr.github.io/sitemap.xml
+Sitemap: https://www.domenicorossignoli.it/sitemap.xml
