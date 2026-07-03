@@ -41,8 +41,9 @@ jobs:
       - name: Install ImageMagick (Windows)
         if: runner.os == 'Windows'
         run: choco install imagemagick -y
-          - name: Build Jekyll site
-            run: bundle exec jekyll build
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
 
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
