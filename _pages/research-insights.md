@@ -46,81 +46,124 @@ sitemap: false
     opacity: 0.75;
   }
 
-  /* --- Concept map --- */
+  /* --- Radial research network --- */
   .insights-map-wrap {
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
     border: 1px solid rgba(128, 128, 128, 0.25);
     border-radius: 12px;
     background-color: var(--global-card-bg-color);
-    padding: 0.5rem;
+    padding: 1rem 0.75rem 0.5rem;
+    position: relative;
   }
 
   .insights-map-wrap svg {
     width: 100%;
     height: auto;
     display: block;
+    max-width: 780px;
+    margin: 0 auto;
   }
 
-  .map-node-circle {
+  .rn-band { opacity: 0.13; }
+
+  .rn-chord {
+    fill: none;
+    stroke: #c8963f;
+    stroke-width: 2.4px;
+    stroke-opacity: 0.55;
+    cursor: pointer;
+    transition: stroke-opacity 0.18s ease, stroke-width 0.18s ease;
+  }
+
+  .rn-chord.same {
+    stroke: #8a94a8;
+    stroke-width: 1.6px;
+    stroke-opacity: 0.4;
+  }
+
+  .rn-chord.hot { stroke-opacity: 0.95; stroke-width: 3.4px; }
+  .rn-chord.same.hot { stroke-width: 2.6px; }
+  .rn-chord.cold { stroke-opacity: 0.07; }
+
+  .rn-node { cursor: pointer; transition: opacity 0.18s ease; }
+  .rn-node.cold { opacity: 0.22; }
+
+  .rn-dot {
     fill: var(--global-bg-color);
-    stroke: var(--global-theme-color);
-    stroke-width: 2px;
-    transition: transform 0.15s ease, fill 0.15s ease;
-    transform-box: fill-box;
-    transform-origin: center;
+    stroke-width: 3px;
+    transition: r 0.15s ease;
   }
 
-  .map-node-center .map-node-circle {
-    fill: var(--global-theme-color);
-  }
-
-  .map-node-theme .map-node-circle {
-    stroke-width: 2.5px;
-  }
-
-  .map-link:hover .map-node-circle,
-  .map-link:focus .map-node-circle {
-    transform: scale(1.12);
-    fill: var(--global-theme-color);
-  }
-
-  .map-link:hover .map-node-label,
-  .map-link:focus .map-node-label {
-    font-weight: 700;
-  }
-
-  .map-node-label {
+  .rn-label {
     fill: var(--global-text-color);
     font-size: 12.5px;
-    text-anchor: middle;
     pointer-events: none;
   }
 
-  .map-node-center .map-node-label {
-    fill: var(--global-bg-color);
-    font-size: 13px;
+  .rn-node:hover .rn-label { font-weight: 700; }
+
+  .rn-center-title {
+    fill: var(--global-text-color);
+    font-size: 19px;
     font-weight: 700;
+    text-anchor: middle;
+    font-family: Georgia, "Times New Roman", serif;
   }
 
-  .map-edge {
-    stroke: var(--global-text-color);
-    stroke-opacity: 0.25;
-    stroke-width: 1.5px;
-    fill: none;
+  .rn-center-sub {
+    fill: var(--global-text-color);
+    opacity: 0.6;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-anchor: middle;
   }
 
-  .map-theme-group {
-    transition: opacity 0.25s ease;
+  .rn-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: #16233d;
+    color: #fff;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    max-width: 250px;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+    transform: translate(-50%, calc(-100% - 12px));
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    z-index: 5;
   }
 
-  .map-theme-group.dimmed {
-    opacity: 0.18;
+  .rn-tooltip .tt-title {
+    font-weight: 700;
+    color: #e2c284;
+    display: block;
+    margin-bottom: 0.15rem;
   }
+
+  .rn-tooltip.visible { opacity: 1; }
+
+  .rn-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    justify-content: center;
+    padding: 0.75rem 0 0.5rem;
+    font-size: 0.8rem;
+    color: var(--global-text-color);
+    opacity: 0.85;
+  }
+
+  .rn-legend .lg { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .rn-legend .sw { width: 11px; height: 11px; border-radius: 3px; }
 
   .insights-hint {
     font-size: 0.85rem;
     opacity: 0.7;
-    margin: 0.35rem 0 0 0.25rem;
+    margin: 0.35rem 0 2rem 0.25rem;
+    text-align: center;
+    font-style: italic;
   }
 
   /* --- Filters --- */
@@ -196,8 +239,9 @@ sitemap: false
 
 <div class="insights-intro">
   <em>What I have learned.</em> This page distills the main findings of my research in plain
-  language. Explore the map below, or filter the findings by theme — each card links to the
-  paper where the full evidence is presented.
+  language. Explore the map below — each golden chord is a conceptual link between two lines
+  of research — or filter the findings by theme. Every card links to the paper where the full
+  evidence is presented.
 </div>
 
 <div class="insights-stats">
@@ -207,155 +251,17 @@ sitemap: false
   <div class="insights-stat"><span class="stat-number">3</span><span class="stat-label">continents</span></div>
 </div>
 
-<div class="insights-map-wrap">
-  <svg viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Concept map of research themes and papers">
-
-    <!-- edges: center to themes -->
-    <path class="map-edge" d="M450,310 L230,140"></path>
-    <path class="map-edge" d="M450,310 L670,140"></path>
-    <path class="map-edge" d="M450,310 L230,480"></path>
-    <path class="map-edge" d="M450,310 L670,480"></path>
-
-    <!-- theme A: institutions -->
-    <g class="map-theme-group institutions">
-      <path class="map-edge" d="M230,140 L70,70"></path>
-      <path class="map-edge" d="M230,140 L70,140"></path>
-      <path class="map-edge" d="M230,140 L70,210"></path>
-
-      <a class="map-link" href="#theme-institutions">
-        <g class="map-node-theme">
-          <circle class="map-node-circle" cx="230" cy="140" r="27"></circle>
-          <text class="map-node-label" x="230" y="136"><tspan x="230" dy="0">🏛️</tspan><tspan x="230" dy="14">Institutions</tspan></text>
-        </g>
-      </a>
-
-      <a class="map-link" href="https://doi.org/10.1017/S0022050724000330" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="70" cy="70" r="20"></circle>
-          <text class="map-node-label" x="70" y="67"><tspan x="70" dy="0">Ora et</tspan><tspan x="70" dy="13">Guberna</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="{{ '/papers/monti-di-pieta/' | relative_url }}">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="70" cy="140" r="20"></circle>
-          <text class="map-node-label" x="70" y="137"><tspan x="70" dy="0">Monti di</tspan><tspan x="70" dy="13">Pietà</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="{{ '/papers/feudal-origins/' | relative_url }}">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="70" cy="210" r="20"></circle>
-          <text class="map-node-label" x="70" y="207"><tspan x="70" dy="0">Feudal</tspan><tspan x="70" dy="13">Sicily</tspan></text>
-        </g>
-      </a>
-    </g>
-
-    <!-- theme B: democracy -->
-    <g class="map-theme-group democracy">
-      <path class="map-edge" d="M670,140 L830,70"></path>
-      <path class="map-edge" d="M670,140 L830,140"></path>
-      <path class="map-edge" d="M670,140 L830,210"></path>
-
-      <a class="map-link" href="#theme-democracy">
-        <g class="map-node-theme">
-          <circle class="map-node-circle" cx="670" cy="140" r="27"></circle>
-          <text class="map-node-label" x="670" y="136"><tspan x="670" dy="0">🗳️</tspan><tspan x="670" dy="14">Democracy</tspan></text>
-        </g>
-      </a>
-
-      <a class="map-link" href="https://doi.org/10.1016/j.ejpoleco.2019.101824" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="830" cy="70" r="20"></circle>
-          <text class="map-node-label" x="830" y="67"><tspan x="830" dy="0">Democracy</tspan><tspan x="830" dy="13">&amp; growth</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="https://doi.org/10.1080/02255189.2017.1382335" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="830" cy="140" r="20"></circle>
-          <text class="map-node-label" x="830" y="137"><tspan x="830" dy="0">Food</tspan><tspan x="830" dy="13">security</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="https://doi.org/10.1016/j.ejpoleco.2020.101939" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="830" cy="210" r="20"></circle>
-          <text class="map-node-label" x="830" y="207"><tspan x="830" dy="0">Media</tspan><tspan x="830" dy="13">capture</tspan></text>
-        </g>
-      </a>
-    </g>
-
-    <!-- theme C: cooperation -->
-    <g class="map-theme-group cooperation">
-      <path class="map-edge" d="M230,480 L70,410"></path>
-      <path class="map-edge" d="M230,480 L70,480"></path>
-      <path class="map-edge" d="M230,480 L70,550"></path>
-
-      <a class="map-link" href="#theme-cooperation">
-        <g class="map-node-theme">
-          <circle class="map-node-circle" cx="230" cy="480" r="27"></circle>
-          <text class="map-node-label" x="230" y="476"><tspan x="230" dy="0">🤝</tspan><tspan x="230" dy="14">Cooperation</tspan></text>
-        </g>
-      </a>
-
-      <a class="map-link" href="{{ '/papers/noise-and-cooperation/' | relative_url }}">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="70" cy="410" r="20"></circle>
-          <text class="map-node-label" x="70" y="407"><tspan x="70" dy="0">Noise &amp;</tspan><tspan x="70" dy="13">cooperation</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="https://doi.org/10.1016/j.socec.2023.102011" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="70" cy="480" r="20"></circle>
-          <text class="map-node-label" x="70" y="477"><tspan x="70" dy="0">Human–robot</tspan><tspan x="70" dy="13">cooperation</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="https://doi.org/10.1007/s40797-026-00388-z" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="70" cy="550" r="20"></circle>
-          <text class="map-node-label" x="70" y="547"><tspan x="70" dy="0">Ultimatum</tspan><tspan x="70" dy="13">game order</tspan></text>
-        </g>
-      </a>
-    </g>
-
-    <!-- theme D: field interventions -->
-    <g class="map-theme-group field">
-      <path class="map-edge" d="M670,480 L830,410"></path>
-      <path class="map-edge" d="M670,480 L830,480"></path>
-      <path class="map-edge" d="M670,480 L830,550"></path>
-
-      <a class="map-link" href="#theme-field">
-        <g class="map-node-theme">
-          <circle class="map-node-circle" cx="670" cy="480" r="27"></circle>
-          <text class="map-node-label" x="670" y="476"><tspan x="670" dy="0">🌍</tspan><tspan x="670" dy="14">Field work</tspan></text>
-        </g>
-      </a>
-
-      <a class="map-link" href="https://doi.org/10.1016/j.joep.2017.12.003" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="830" cy="410" r="20"></circle>
-          <text class="map-node-label" x="830" y="407"><tspan x="830" dy="0">Trust</tspan><tspan x="830" dy="13">behind bars</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="https://doi.org/10.1016/j.econedurev.2023.102383" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="830" cy="480" r="20"></circle>
-          <text class="map-node-label" x="830" y="477"><tspan x="830" dy="0">High-dosage</tspan><tspan x="830" dy="13">tutoring</tspan></text>
-        </g>
-      </a>
-      <a class="map-link" href="https://doi.org/10.1093/jae/ejab007" target="_blank" rel="noopener">
-        <g class="map-node-leaf">
-          <circle class="map-node-circle" cx="830" cy="550" r="20"></circle>
-          <text class="map-node-label" x="830" y="547"><tspan x="830" dy="0">Child</tspan><tspan x="830" dy="13">sponsorship</tspan></text>
-        </g>
-      </a>
-    </g>
-
-    <!-- center -->
-    <g class="map-node-center">
-      <circle class="map-node-circle" cx="450" cy="310" r="36"></circle>
-      <text class="map-node-label" x="450" y="306"><tspan x="450" dy="0">My</tspan><tspan x="450" dy="14">research</tspan></text>
-    </g>
-  </svg>
+<div class="insights-map-wrap" id="rn-wrap">
+  <svg id="rn-svg" viewBox="0 0 760 700" role="img" aria-label="Radial network of research papers and their conceptual connections"></svg>
+  <div class="rn-tooltip" id="rn-tooltip"></div>
+  <div class="rn-legend">
+    <span class="lg"><span class="sw" style="background:#7a3b3b"></span>Institutions</span>
+    <span class="lg"><span class="sw" style="background:#2f6b63"></span>Democracy</span>
+    <span class="lg"><span class="sw" style="background:#c8963f"></span>Cooperation</span>
+    <span class="lg"><span class="sw" style="background:#35577a"></span>Field work</span>
+  </div>
 </div>
-<p class="insights-hint">Click a theme to jump to its section below, or a paper to open it directly.</p>
+<p class="insights-hint">Hover a paper to highlight its connections · hover a chord to read the shared concept · click to open the paper.</p>
 
 <div class="insights-filters" role="group" aria-label="Filter findings by theme">
   <button class="filter-chip active" data-filter="all">All</button>
@@ -476,10 +382,205 @@ sitemap: false
 
 <script>
   (function () {
+    /* ---------- Radial research network ---------- */
+    var THEMES = {
+      institutions: { color: "#7a3b3b" },
+      democracy:    { color: "#2f6b63" },
+      cooperation:  { color: "#c8963f" },
+      field:        { color: "#35577a" }
+    };
+
+    var PAPERS = [
+      { id: "ora",       theme: "institutions", label: ["Ora et", "Guberna"],          url: "https://doi.org/10.1017/S0022050724000330", ext: true,
+        tip: "Benedictine monasteries fostered better economic outcomes in medieval England. — J. Econ. History, 2024" },
+      { id: "monti",     theme: "institutions", label: ["Monti di", "Pietà"],          url: "{{ '/papers/monti-di-pieta/' | relative_url }}", ext: false,
+        tip: "Franciscan preaching triggered the birth of charitable credit institutions in 15th-c. Italy. — Working paper" },
+      { id: "feudal",    theme: "institutions", label: ["Feudal", "Sicily"],           url: "{{ '/papers/feudal-origins/' | relative_url }}", ext: false,
+        tip: "Crown oversight of feudal lords left persistently better local outcomes in Sicily. — Work in progress" },
+      { id: "demgrow",   theme: "democracy",    label: ["Democracy", "& growth"],      url: "https://doi.org/10.1016/j.ejpoleco.2019.101824", ext: true,
+        tip: "Meta-analysis of 2,000+ regressions: democracy raises growth modestly, mostly through indirect channels. — EJPE, 2020" },
+      { id: "food",      theme: "democracy",    label: ["Food", "security"],           url: "https://doi.org/10.1080/02255189.2017.1382335", ext: true,
+        tip: "Inclusive institutions improve food security across developing countries. — CJDS, 2018" },
+      { id: "media",     theme: "democracy",    label: ["Media", "capture"],           url: "https://doi.org/10.1016/j.ejpoleco.2020.101939", ext: true,
+        tip: "Media market structure determines whether elections hold politicians accountable. — EJPE, 2021" },
+      { id: "prison",    theme: "field",        label: ["Trust", "behind bars"],       url: "https://doi.org/10.1016/j.joep.2017.12.003", ext: true,
+        tip: "Rehabilitation programs measurably increase trust and prosocial behavior among inmates. — JEP, 2018" },
+      { id: "tutoring",  theme: "field",        label: ["High-dosage", "tutoring"],    url: "https://doi.org/10.1016/j.econedurev.2023.102383", ext: true,
+        tip: "Intensive tutoring narrows the income-achievement gap in Dutch primary schools. — EER, 2023" },
+      { id: "sponsor",   theme: "field",        label: ["Child", "sponsorship"],       url: "https://doi.org/10.1093/jae/ejab007", ext: true,
+        tip: "Sponsored children in Goma (DRC) perform better at school. — J. Afr. Economies, 2022" },
+      { id: "noise",     theme: "cooperation",  label: ["Noise &", "cooperation"],     url: "{{ '/papers/noise-and-cooperation/' | relative_url }}", ext: false,
+        tip: "Noise erodes cooperation in repeated games; ex-post communication doesn't fix it. — Work in progress" },
+      { id: "robot",     theme: "cooperation",  label: ["Human–robot", "cooperation"], url: "https://doi.org/10.1016/j.socec.2023.102011", ext: true,
+        tip: "People cooperate more with robots that look and speak like humans. — JBEE, 2023" },
+      { id: "ultimatum", theme: "cooperation",  label: ["Ultimatum", "game order"],    url: "https://doi.org/10.1007/s40797-026-00388-z", ext: true,
+        tip: "Order of play shapes fairness: experiencing both roles changes behavior. — Ital. Econ. J., 2026" }
+    ];
+
+    var CHORDS = [
+      { a: "ora",       b: "monti",     label: "Religion & economy" },
+      { a: "ora",       b: "feudal",    label: "Historical persistence" },
+      { a: "monti",     b: "feudal",    label: "Medieval Italy" },
+      { a: "ora",       b: "demgrow",   label: "Institutions & growth" },
+      { a: "demgrow",   b: "food",      label: "Inclusive institutions" },
+      { a: "demgrow",   b: "media",     label: "Accountability" },
+      { a: "monti",     b: "prison",    label: "Social capital & trust" },
+      { a: "noise",     b: "robot",     label: "Repeated games" },
+      { a: "noise",     b: "ultimatum", label: "Lab experiments" },
+      { a: "robot",     b: "prison",    label: "Trust" },
+      { a: "ultimatum", b: "prison",    label: "Fairness & prosociality" },
+      { a: "tutoring",  b: "sponsor",   label: "Education interventions" },
+      { a: "food",      b: "sponsor",   label: "Development outcomes" }
+    ];
+
+    var SVGNS = "http://www.w3.org/2000/svg";
+    var svg = document.getElementById("rn-svg");
+    var tooltip = document.getElementById("rn-tooltip");
+    var wrap = document.getElementById("rn-wrap");
+    if (!svg || !tooltip || !wrap) return;
+
+    var CX = 380, CY = 350, R = 235, LABEL_R = 285;
+    var themeOrder = ["institutions", "democracy", "field", "cooperation"];
+    var sectorGap = 0.22;
+    var perPaper = (2 * Math.PI - sectorGap * themeOrder.length) / PAPERS.length;
+
+    var nodes = {};
+    var angle = -Math.PI / 2 + sectorGap / 2;
+    themeOrder.forEach(function (t) {
+      PAPERS.filter(function (p) { return p.theme === t; }).forEach(function (p) {
+        var a = angle + perPaper / 2;
+        nodes[p.id] = {
+          paper: p, angle: a,
+          x: CX + R * Math.cos(a), y: CY + R * Math.sin(a),
+          lx: CX + LABEL_R * Math.cos(a), ly: CY + LABEL_R * Math.sin(a)
+        };
+        angle += perPaper;
+      });
+      angle += sectorGap;
+    });
+
+    function el(name, attrs, parent) {
+      var e = document.createElementNS(SVGNS, name);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      (parent || svg).appendChild(e);
+      return e;
+    }
+
+    // theme bands
+    themeOrder.forEach(function (t) {
+      var members = PAPERS.filter(function (p) { return p.theme === t; }).map(function (p) { return nodes[p.id]; });
+      var a0 = members[0].angle - perPaper / 2 + 0.03;
+      var a1 = members[members.length - 1].angle + perPaper / 2 - 0.03;
+      var r1 = R + 14, r0 = R - 14;
+      var large = (a1 - a0) > Math.PI ? 1 : 0;
+      el("path", {
+        d: ["M", CX + r1 * Math.cos(a0), CY + r1 * Math.sin(a0),
+            "A", r1, r1, 0, large, 1, CX + r1 * Math.cos(a1), CY + r1 * Math.sin(a1),
+            "L", CX + r0 * Math.cos(a1), CY + r0 * Math.sin(a1),
+            "A", r0, r0, 0, large, 0, CX + r0 * Math.cos(a0), CY + r0 * Math.sin(a0), "Z"].join(" "),
+        fill: THEMES[t].color,
+        "class": "rn-band",
+        "data-band": t
+      });
+    });
+
+    // chords
+    var chordEls = [];
+    CHORDS.forEach(function (c) {
+      var n1 = nodes[c.a], n2 = nodes[c.b];
+      var sameTheme = n1.paper.theme === n2.paper.theme;
+      var dAng = Math.abs(n1.angle - n2.angle);
+      if (dAng > Math.PI) dAng = 2 * Math.PI - dAng;
+      var pull = 1 - (dAng / Math.PI) * 0.82;
+      var mx = (n1.x + n2.x) / 2, my = (n1.y + n2.y) / 2;
+      var qx = CX + (mx - CX) * pull, qy = CY + (my - CY) * pull;
+      var path = el("path", {
+        d: "M" + n1.x + "," + n1.y + " Q" + qx + "," + qy + " " + n2.x + "," + n2.y,
+        "class": "rn-chord" + (sameTheme ? " same" : "")
+      });
+      path.addEventListener("mousemove", function (ev) {
+        showTip(ev, "<span class='tt-title'>" + c.label + "</span>" + n1.paper.label.join(" ") + " ↔ " + n2.paper.label.join(" "));
+        path.classList.add("hot");
+      });
+      path.addEventListener("mouseleave", function () { hideTip(); path.classList.remove("hot"); });
+      chordEls.push({ el: path, c: c });
+    });
+
+    // center label
+    var t1 = el("text", { x: CX, y: CY - 8, "class": "rn-center-title" });
+    t1.textContent = "My Research";
+    var t2 = el("text", { x: CX, y: CY + 13, "class": "rn-center-sub" });
+    t2.textContent = "12 FINDINGS · 4 THEMES · 13 LINKS";
+
+    // nodes
+    Object.keys(nodes).forEach(function (id) {
+      var n = nodes[id];
+      var color = THEMES[n.paper.theme].color;
+      var g = el("g", { "class": "rn-node", "data-node": id, "data-node-theme": n.paper.theme, tabindex: "0", role: "link", "aria-label": n.paper.label.join(" ") });
+
+      el("circle", { cx: n.x, cy: n.y, r: 9, stroke: color, "class": "rn-dot", "data-dot": id }, g);
+
+      var anchor = "middle";
+      var cosA = Math.cos(n.angle);
+      if (cosA > 0.35) anchor = "start";
+      else if (cosA < -0.35) anchor = "end";
+      var text = el("text", { x: n.lx, y: n.ly - 5, "text-anchor": anchor, "class": "rn-label" }, g);
+      n.paper.label.forEach(function (line, li) {
+        var ts = document.createElementNS(SVGNS, "tspan");
+        ts.setAttribute("x", n.lx);
+        ts.setAttribute("dy", li === 0 ? 0 : 13.5);
+        ts.textContent = line;
+        text.appendChild(ts);
+      });
+
+      function open() {
+        if (n.paper.ext) window.open(n.paper.url, "_blank", "noopener");
+        else window.location.href = n.paper.url;
+      }
+      g.addEventListener("click", open);
+      g.addEventListener("keydown", function (ev) { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); open(); } });
+      g.addEventListener("mousemove", function (ev) {
+        showTip(ev, "<span class='tt-title'>" + n.paper.label.join(" ") + "</span>" + n.paper.tip);
+        highlight(id);
+      });
+      g.addEventListener("mouseleave", function () { hideTip(); resetHighlight(); });
+    });
+
+    function highlight(id) {
+      var connected = {};
+      connected[id] = true;
+      chordEls.forEach(function (ch) {
+        var on = ch.c.a === id || ch.c.b === id;
+        ch.el.classList.toggle("hot", on);
+        ch.el.classList.toggle("cold", !on);
+        if (on) { connected[ch.c.a] = true; connected[ch.c.b] = true; }
+      });
+      svg.querySelectorAll(".rn-node").forEach(function (g) {
+        g.classList.toggle("cold", !connected[g.getAttribute("data-node")]);
+      });
+      var dot = svg.querySelector('[data-dot="' + id + '"]');
+      if (dot) dot.setAttribute("r", "12");
+    }
+
+    function resetHighlight() {
+      chordEls.forEach(function (ch) { ch.el.classList.remove("hot", "cold"); });
+      svg.querySelectorAll(".rn-node").forEach(function (g) { g.classList.remove("cold"); });
+      svg.querySelectorAll("[data-dot]").forEach(function (d) { d.setAttribute("r", "9"); });
+    }
+
+    function showTip(ev, html) {
+      var rect = wrap.getBoundingClientRect();
+      tooltip.innerHTML = html;
+      tooltip.style.left = (ev.clientX - rect.left) + "px";
+      tooltip.style.top = (ev.clientY - rect.top) + "px";
+      tooltip.classList.add("visible");
+    }
+    function hideTip() { tooltip.classList.remove("visible"); }
+
+    /* ---------- Theme filters (cards + map) ---------- */
     var chips = document.querySelectorAll(".filter-chip");
     var cards = document.querySelectorAll(".insight-card");
     var headings = document.querySelectorAll(".insights-theme-heading");
-    var mapGroups = document.querySelectorAll(".map-theme-group");
 
     chips.forEach(function (chip) {
       chip.addEventListener("click", function () {
@@ -493,12 +594,19 @@ sitemap: false
         headings.forEach(function (h) {
           h.style.display = (theme === "all" || h.dataset.theme === theme) ? "" : "none";
         });
-        mapGroups.forEach(function (g) {
-          if (theme === "all" || g.classList.contains(theme)) {
-            g.classList.remove("dimmed");
-          } else {
-            g.classList.add("dimmed");
-          }
+
+        // reflect filter on the map: dim other themes' nodes and unrelated chords
+        svg.querySelectorAll(".rn-node").forEach(function (g) {
+          g.classList.toggle("cold", theme !== "all" && g.getAttribute("data-node-theme") !== theme);
+        });
+        chordEls.forEach(function (ch) {
+          var touches = theme === "all" ||
+            nodes[ch.c.a].paper.theme === theme || nodes[ch.c.b].paper.theme === theme;
+          ch.el.classList.toggle("cold", !touches);
+          ch.el.classList.remove("hot");
+        });
+        svg.querySelectorAll(".rn-band").forEach(function (b) {
+          b.style.opacity = (theme === "all" || b.getAttribute("data-band") === theme) ? "" : "0.04";
         });
       });
     });
