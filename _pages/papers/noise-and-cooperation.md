@@ -8,8 +8,7 @@ authors: "Mario A. Maggioni, Chiara Nardi, and Domenico Rossignoli"
 status: "Work in progress"
 abstract: "This study shows that noise (modeled as action reversals) weakens mutual cooperation in an indefinitely repeated Prisoner's Dilemma: ex-post communication reduces cooperation only under no or low noise."
 paper_url: ""
-data_url: ""
-code_url: ""
+doi_url: ""
 cite_apa: "Maggioni, M. A., Nardi, C., & Rossignoli, D. (2026). Noise and cooperation in an indefinitely repeated Prisoner's Dilemma [Work in progress]."
 cite_bibtex: |
   @unpublished{maggioni2026noise,

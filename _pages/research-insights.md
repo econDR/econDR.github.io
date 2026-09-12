@@ -293,7 +293,7 @@ sitemap: false
     <div class="card-icon">🏛️</div>
     <div class="insight-claim">How feudal lords were monitored mattered for development.</div>
     <div class="insight-detail">In medieval Sicily, territories temporarily repossessed by the Crown suffered less rent extraction and fewer agency problems — and display persistently better local economic outcomes today.</div>
-    <div class="insight-links"><a href="{{ '/papers/feudal-origins/' | relative_url }}">Work in progress →</a></div>
+    <div class="insight-links"><a href="{{ '/papers/feudal-origins/' | relative_url }}">Working paper →</a></div>
   </div>
 
   <h2 class="insights-theme-heading" id="theme-democracy" data-theme="democracy">🗳️ Democracy, institutions, and accountability</h2>

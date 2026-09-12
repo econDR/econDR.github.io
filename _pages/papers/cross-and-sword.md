@@ -8,8 +8,7 @@ authors: "Domenico Rossignoli and Federico Trombetta"
 status: "Work in progress"
 abstract: "This project studies how religious identity and patterns of land ownership interacted to shape local conflict dynamics in early modern England."
 paper_url: ""
-data_url: ""
-code_url: ""
+doi_url: ""
 cite_apa: "Rossignoli, D., & Trombetta, F. (2026). The cross and the sword. Religious identity, land ownership and conflict: Evidence from six centuries of English history [Work in progress]."
 cite_bibtex: |
   @unpublished{rossignoli2026cross,

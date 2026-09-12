@@ -8,8 +8,7 @@ authors: "Costanza Marconi and Domenico Rossignoli"
 status: "Working paper"
 abstract: "Religious persuasion through Franciscan preaching causally drove the emergence of Monti di Pietà in 15th-century Italy by legitimizing lending, particularly in contexts shaped by natural disasters."
 paper_url: ""
-data_url: ""
-code_url: ""
+doi_url: ""
 cite_apa: "Marconi, C., & Rossignoli, D. (2026). Crediting the poor: The effect of Italian Monti di Pietà on social capital [Working paper]."
 cite_bibtex: |
   @unpublished{marconi2026crediting,

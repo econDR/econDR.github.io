@@ -49,25 +49,29 @@ nav_order: 4
   {% for paper in site.data.working_papers %}
     <article class="wip-item">
       <div class="wip-title">{{ paper.title }}</div>
+      {% if paper.subtitle and paper.subtitle != "" %}
+        <div class="wip-meta">{{ paper.subtitle }}</div>
+      {% endif %}
       <div class="wip-meta">
         {% if paper.coauthors and paper.coauthors.size > 0 %}
           With {{ paper.coauthors | join: ", " }} ·
         {% endif %}
         {{ paper.status }}
       </div>
-      <div>{{ paper.abstract }}</div>
+      {% if paper.abstract and paper.abstract != "" %}
+        <div>{{ paper.abstract }}</div>
+      {% endif %}
       <div class="wip-links">
         {% if paper.page %}
           <a href="{{ paper.page | relative_url }}">Details &amp; citation</a>
         {% endif %}
-        {% if paper.paper_url != "" %}
-          <a href="{{ paper.paper_url }}" target="_blank" rel="noopener">Paper</a>
+        {% assign paper_href = paper.paper_url | default: "" | strip %}
+        {% assign doi_href = paper.doi_url | default: "" | strip %}
+        {% if paper_href != "" %}
+          <a href="{{ paper_href }}" target="_blank" rel="noopener">Paper</a>
         {% endif %}
-        {% if paper.data_url != "" %}
-          <a href="{{ paper.data_url }}" target="_blank" rel="noopener">Data</a>
-        {% endif %}
-        {% if paper.code_url != "" %}
-          <a href="{{ paper.code_url }}" target="_blank" rel="noopener">Code</a>
+        {% if doi_href != "" %}
+          <a href="{{ doi_href }}" target="_blank" rel="noopener">DOI</a>
         {% endif %}
       </div>
     </article>

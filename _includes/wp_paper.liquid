@@ -66,14 +66,17 @@
   {{ page.authors }} · {{ page.status }}
 </div>
 
+{% if page.abstract and page.abstract != "" %}
 <h2>Abstract</h2>
 <div class="paper-abstract">{{ page.abstract }}</div>
+{% endif %}
 
-{% if page.paper_url or page.data_url or page.code_url %}
+{% assign paper_href = page.paper_url | default: "" | strip %}
+{% assign doi_href = page.doi_url | default: "" | strip %}
+{% if paper_href != "" or doi_href != "" %}
   <div class="paper-links">
-    {% if page.paper_url %}<a href="{{ page.paper_url }}" target="_blank" rel="noopener">Paper (PDF)</a>{% endif %}
-    {% if page.data_url %}<a href="{{ page.data_url }}" target="_blank" rel="noopener">Data</a>{% endif %}
-    {% if page.code_url %}<a href="{{ page.code_url }}" target="_blank" rel="noopener">Code</a>{% endif %}
+    {% if paper_href != "" %}<a href="{{ paper_href }}" target="_blank" rel="noopener">Paper</a>{% endif %}
+    {% if doi_href != "" %}<a href="{{ doi_href }}" target="_blank" rel="noopener">DOI</a>{% endif %}
   </div>
 {% endif %}
 
