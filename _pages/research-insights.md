@@ -585,7 +585,7 @@ sitemap: false
         url: "https://doi.org/10.1016/j.ejpoleco.2019.101824", ext: true },
       { id: "media", theme: "politics", status: "pub", label: ["Media", "capture"],
         title: "The Price of Silence: Media Competition, Capture, and Electoral Accountability",
-        venue: "European Journal of Political Economy, 2021 · with M. A. Maggioni",
+        venue: "European Journal of Political Economy, 2021 · with F. Trombetta",
         finding: "When incumbents can buy the silence of news outlets, the structure of the media market decides how much information reaches voters, and how well elections discipline politicians.",
         url: "https://doi.org/10.1016/j.ejpoleco.2020.101939", ext: true },
       { id: "food", theme: "politics", status: "pub", label: ["Food", "security"],
